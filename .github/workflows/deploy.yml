@@ -20,7 +20,7 @@ jobs:
     steps:
       # 1. Checkout repo, so the job can access it
       - name: Checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       
       # 2. Build the project
       - name: Install and build Swift
