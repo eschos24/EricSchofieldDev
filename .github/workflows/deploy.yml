@@ -1,0 +1,42 @@
+name: Deploy on GitHub Pages
+
+# Run only for pull requests on the main branch
+on:
+  pull_request: 
+    branches: 
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "deploy"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 1. Checkout repo, so the job can access it
+      - name: Checkout
+      - uses: actions/checkout@v3
+      
+      # 2. Build the project
+      - name: Install and build Swift
+        run: swift run
+        
+      # 3. Create a public folder
+      - name: Set Public Folder
+        run: |
+          mkdir .public 
+          cp -r Output/* .public
+          mv .public public
+          
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.4.0
+        with: 
+          branch: gh-pages
+          folder: public
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
