@@ -7,7 +7,9 @@ try PortfolioSite()
         .addMarkdownFiles(),
         .copyResources(),
         .generateHTML(withTheme: .portfolioSite),
+//        .generateRSSFeed(including: [.posts]),
+//        .generateSiteMap(),
         .deploy(using: .gitHub("eschos24/eschos24.github.io",
                                branch: "main",
-                               useSSH: false))
+                               useSSH: true))
     ])
