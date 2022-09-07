@@ -1,11 +1,11 @@
 ---
-date: 2022-09-01 10:00
+date: 2022-09-07 9:00
 title: Privacy Policy
 description: Privacy policy for Wordit iOS app.
 ---
 
 **Last updated**
-September 1, 2022
+September 7, 2022
 
 # Wordit Privacy Policy
 <hr />
